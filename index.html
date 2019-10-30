@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title> Project 2 </title>
+</head>
+
+<body>
+    <header class="background-img">
+        <ul id="webticker">
+            <li data-update="item1" id="item1"></li>
+            <li data-update="item2" id="item2"></li>
+            <li data-update="item3" id="item3"></li>
+            <li data-update="item4" id="item4"></li>
+            <li data-update="item5" id="item5"></li>
+            <li data-update="item6" id="item6"></li>
+            <li data-update="item7" id="item7"></li>
+        </ul>
+        <div class="wrapper">
+            <form action="#">
+                <label for="">
+                    <h1>stock search </h1>
+                </label>
+                <div class="search-bar">
+                    <input type="text" placeholder="enter ticker" id="tags">
+                    <input type="submit" value="search">
+                </div>
+            </form>
+        </div>
+        <div class="time">
+            <p> last refreshed: <span class="nowTime"></span></p>
+        </div>
+
+    </header>
+    <main>
+        <div class="wrapper">
+            <div class="section1">
+                <section class="infoSection">
+                    <h3> Quick Quote </h3>
+                    <div>
+                        <ul class = "stockInfo">
+                        </ul>
+                    </div>
+                </section>
+                <section class="advancedQuote">
+                    <h3> Advance Quote </h3>
+                    <div>
+                        <ul class="stockAdvanced">
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <div class="section2">
+                <section class="technicalIndicator">
+                    <h3> Technical Indicator</h3>
+                    <div>
+                        <ul class="stockTechnical">
+                    </ul>
+                    </div>
+                </section>
+                <section class="newsSection">
+                    <h3> News </h3>
+                    <div>
+                        <ul class="stockNews"></ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footnote">
+            <p> data courtesy of the <a href="https://www.alphavantage.co/"> Alpha Vantage </a> and <a
+                    href=https://iexcloud.io"> IEX Cloud</a> </p> </div> </footer> <script
+                    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="./jquery.webticker.min.js"></script>
+                    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+                    <script src="script.js"> </script>
+
+</body>
+
+</html>
