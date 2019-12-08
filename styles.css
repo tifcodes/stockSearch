@@ -69,26 +69,60 @@ i {
 }
 
 header {
-    height: 40vh;
+    height: 95vh;
     text-align: center;
+    position: relative;
 }
 
 h1 {
     padding: 50px;
-    font-size: 5rem;
+    font-size: 7rem;
 }
 
 form {
+    height: 80vh;
     padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+input {
+    padding: 5px 0 4px 0;
+}
+
+input[type=submit] {
+    background: gold;
+    text-transform: uppercase;
+    border: none;
+    padding: 5px;
+    float: right;
+}
+
+.autocompleteStock {
+    font-size: 2rem;
+}
+
+.ui-menu {
+    background-color: black;
+    width: 45%;
 }
 
 .time {
     text-align: right;
-    padding-bottom: 0;
     font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
+
 /* main section */
 h3 {
+    margin: 20px 0;
     padding: 10px 0;
     font-size: 2.5rem;
 }

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
     <link rel="stylesheet" href="styles.css">
     <title> Project 2 </title>
 </head>
@@ -25,8 +27,11 @@
                 <label for="">
                     <h1>stock search </h1>
                 </label>
-                <div class="search-bar">
-                    <input type="text" placeholder="enter ticker" id="tags">
+                <div class="ui-widget">
+                    <input type="text" placeholder="enter ticker" id="tags" autocomplete="off">
+                    <div class="search">
+                        <ul class="autocompleteStock"></ul>
+                    </div>
                     <input type="submit" value="search">
                 </div>
             </form>
@@ -42,7 +47,7 @@
                 <section class="infoSection">
                     <h3> Quick Quote </h3>
                     <div>
-                        <ul class = "stockInfo">
+                        <ul class="stockInfo">
                         </ul>
                     </div>
                 </section>
@@ -59,7 +64,7 @@
                     <h3> Technical Indicator</h3>
                     <div>
                         <ul class="stockTechnical">
-                    </ul>
+                        </ul>
                     </div>
                 </section>
                 <section class="newsSection">
@@ -76,6 +81,7 @@
             <p> data courtesy of the <a href="https://www.alphavantage.co/"> Alpha Vantage </a> and <a
                     href=https://iexcloud.io"> IEX Cloud</a> </p> </div> </footer> <script
                     src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
                     <script src="./jquery.webticker.min.js"></script>
                     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
                     <script src="script.js"> </script>

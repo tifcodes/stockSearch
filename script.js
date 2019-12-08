@@ -80,14 +80,20 @@ stock.getStockStats = function (stockQuery) {
 $("#tags").autocomplete({
     source: function (request, response) {
         $.ajax({
-            url: `${stock.baseUrl} `,
+            url: `https://ticker-2e1ica8b9.now.sh/keyword/${request.term}`,
             method: "GET",
             dataType: 'json',
-            data: {
-                apikey: stock.key,
-                function: "SYMBOL_SEARCH",
-                keywords: request,
+            success: function (data) {
+                // console.log(data)
+                response(data)
             }
+        }).then(function (data) {
+            console.log(data)
+            data.map(function (stock) {
+                console.log(stock.symbol, stock.name)
+                $(".search").empty();
+                $("#ui-id-1").append(`<li> <a href="#"> ${stock.symbol}, ${stock.name} </a> </li>`)
+            })
         })
     }
 })
