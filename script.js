@@ -341,15 +341,15 @@ stock.findMatches = function (wordToMatch, stocks) {
     })
 }
 
-function displayMatches() {
+stock.displayMatches = function () {
     const matchArray = stock.findMatches(this.value, stocksAutocomplete);
     const html = matchArray.map(stockData => {
         const regex = new RegExp(this.value, "gi");
         const stockSymbol =
-            stockData.symbol.replace(regex, `<span class = "hl"> ${this.value}</span>`)
+            stockData.symbol.replace(regex, `<span class = "hl">${this.value}</span>`)
         const stockName =
-            stockData.name.replace(regex, `<span class = "hl"> ${this.value}</span>`)
-        return `<li> ${stockSymbol}, ${stockName} </li>`
+            stockData.name.replace(regex, `<span class = "hl">${this.value}</span>`)
+        return `<li> ${stockSymbol}, <span class = "stockName">${stockName}</span> </li>`
     }).join("")
     suggestions.innerHTML = html;
 }
@@ -360,6 +360,6 @@ $(function () {
 
     stock.autocomplete();
 
-    searchInput.addEventListener('change', displayMatches);
-    searchInput.addEventListener('keyup', displayMatches)
+    searchInput.addEventListener('change', stock.displayMatches);
+    searchInput.addEventListener('keyup', stock.displayMatches)
 })

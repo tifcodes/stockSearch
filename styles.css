@@ -109,8 +109,16 @@ input[type=submit] {
     margin: 5px 0;
 }
 
+.suggestions li:focus {
+    color: red;
+}
+
 .stockList{
     margin: 5px;
+}
+
+.stockName {
+    text-transform: none;
 }
 
 .time {
