@@ -83,29 +83,6 @@ stock.getStockStats = function (stockQuery) {
     return stockPromise
 }
 
-// autocomplete section (not working YET!!!)
-// $("#tags").autocomplete({
-//     source: function (request, response) {
-//         $.ajax({
-//             url: `https://ticker-2e1ica8b9.now.sh/keyword/${request.term}`,
-//             method: "GET",
-//             dataType: 'json',
-//             success: function (data) {
-//                 // console.log(data)
-//                 response(data)
-//             }
-//         }).then(function (data) {
-//             console.log(data)
-//             data.map(function (stock) {
-//                 console.log(stock.symbol, stock.name)
-//                 // $(".search").empty();
-//                 // $(".ui-menu-divider div").append(`${stock.symbol}, ${stock.name}` )
-//                 // $("#ui-id-1").append(`<li class = "stockList"> ${stock.symbol}, ${stock.name} </li>`)
-//             })
-//         })
-//     }
-// })
-
 // header section
 $("#webticker").webTicker()
 
@@ -357,7 +334,7 @@ stock.autocomplete = function () {
 
 }
 
-function findMatches(wordToMatch, stocks) {
+stock.findMatches = function (wordToMatch, stocks) {
     return stocks[0].filter(stockData => {
         // here we need to figure out if the stock matches the search
 
@@ -368,14 +345,14 @@ function findMatches(wordToMatch, stocks) {
 }
 
 function displayMatches() {
-    const matchArray = findMatches(this.value, stocksAutocomplete);
+    const matchArray = stock.findMatches(this.value, stocksAutocomplete);
     const html = matchArray.map(stockData => {
         const regex = new RegExp(this.value, "gi");
         const stockSymbol =
             stockData.symbol.replace(regex, `<span class = "hl"> ${this.value} </span>`)
         const stockName =
             stockData.name.replace(regex, `<span class = "hl"> ${this.value} </span>`)
-        return `<li> ${stockSymbol} ${stockName} </li>`
+        return `<li> ${stockSymbol}, ${stockName} </li>`
     }).join("")
     suggestions.innerHTML = html;
 }
