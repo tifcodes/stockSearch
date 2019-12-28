@@ -1,4 +1,5 @@
 const stock = {};
+const stocksAutocomplete = [];
 
 stock.key = "JA9OLHR835O1ITHO";
 stock.key1 = "UYPIKHB4XXWK9KU4";
@@ -77,36 +78,30 @@ stock.getStockStats = function (stockQuery) {
 }
 
 // autocomplete section (not working YET!!!)
-$("#tags").autocomplete({
-    source: function (request, response) {
-        $.ajax({
-            url: `https://ticker-2e1ica8b9.now.sh/keyword/${request.term}`,
-            method: "GET",
-            dataType: 'json',
-            success: function (data) {
-                // console.log(data)
-                response(data)
-            }
-        }).then(function (data) {
-            console.log(data)
-            data.map(function (stock) {
-                console.log(stock.symbol, stock.name)
-                $(".search").empty();
-                $("#ui-id-1").append(`<li> <a href="#"> ${stock.symbol}, ${stock.name} </a> </li>`)
-            })
-        })
-    }
-})
+// $("#tags").autocomplete({
+//     source: function (request, response) {
+//         $.ajax({
+//             url: `https://ticker-2e1ica8b9.now.sh/keyword/${request.term}`,
+//             method: "GET",
+//             dataType: 'json',
+//             success: function (data) {
+//                 // console.log(data)
+//                 response(data)
+//             }
+//         }).then(function (data) {
+//             console.log(data)
+//             data.map(function (stock) {
+//                 console.log(stock.symbol, stock.name)
+//                 // $(".search").empty();
+//                 // $(".ui-menu-divider div").append(`${stock.symbol}, ${stock.name}` )
+//                 // $("#ui-id-1").append(`<li class = "stockList"> ${stock.symbol}, ${stock.name} </li>`)
+//             })
+//         })
+//     }
+// })
 
 // header section
-$("#webticker").webTicker({
-    height: "30px",
-    duplicate: true,
-    rssfrequency: 0,
-    startEmpty: false,
-    hoverpause: false,
-    transition: "ease",
-});
+$("#webticker").webTicker()
 
 // is there anyway I could have done this more efficiently???
 stock.getStockTickerScroll = function (stock1, stock2, stock3, stock4, stock5, stock6, stock7) {
@@ -347,7 +342,31 @@ stock.init = function () {
     })
 }
 
+stock.autocomplete = function () {
+    const endpoint = 'https://financialmodelingprep.com/api/v3/company/stock/list';
+
+    fetch(endpoint)
+        .then(blob => blob.json())
+        .then(data => stocksAutocomplete.push(data.symbolsList))
+
+}
+
+function findMatches(wordToMatch, stocks) {
+    return stocks[0].filter(stockData => {
+        // here we need to figure out if the stock matches the search
+
+        const regex = new RegExp(wordToMatch, 'gi');
+
+        return stockData.symbol.match(regex) || stockData.name.match(regex)
+    })
+}
+
+function displayMatches() {
+    console.log(this.value);
+}
+
 $(function () {
     stock.init();
     stock.getStockTickerScroll("DJIA", "SPX", "^RUT", "CL=F", "GC=F", "CAD=X", "^FTSE");
+    stock.autocomplete();
 })
