@@ -104,23 +104,16 @@ input[type=submit] {
     float: right;
 }
 
-.autocompleteStock {
-    font-size: 2rem;
+.suggestions {
+    max-height: 160px;
+    max-width: 350px;
+    overflow: auto;
 }
 
-.ui-widget {
-    display: flex;
-}
-
-.search {
-    display: flex;
-
-}
-
-.ui-menu {
-    background-color: black;
-    width: 30%;
-    flex-direction: column;
+.suggestions li {
+    font-size: 1.6rem;
+    border-bottom: 1px solid white;
+    margin-bottom: 3px;
 }
 
 .stockList{
@@ -163,6 +156,10 @@ h3 {
 
 .newsSection {
     font-size: 1.5rem;
+}
+
+.hl {
+    background: #ffc600;
 }
 
 /* classes change color */
