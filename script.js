@@ -4,9 +4,6 @@ const stocksAutocomplete = [];
 const searchInput = document.querySelector(".search");
 const suggestions = document.querySelector(".suggestions");
 
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', displayMatches)
-
 stock.key = "JA9OLHR835O1ITHO";
 stock.key1 = "UYPIKHB4XXWK9KU4";
 stock.key2 = "SA55F80KKKKUH2DO";
@@ -349,9 +346,9 @@ function displayMatches() {
     const html = matchArray.map(stockData => {
         const regex = new RegExp(this.value, "gi");
         const stockSymbol =
-            stockData.symbol.replace(regex, `<span class = "hl"> ${this.value} </span>`)
+            stockData.symbol.replace(regex, `<span class = "hl"> ${this.value}</span>`)
         const stockName =
-            stockData.name.replace(regex, `<span class = "hl"> ${this.value} </span>`)
+            stockData.name.replace(regex, `<span class = "hl"> ${this.value}</span>`)
         return `<li> ${stockSymbol}, ${stockName} </li>`
     }).join("")
     suggestions.innerHTML = html;
@@ -360,5 +357,9 @@ function displayMatches() {
 $(function () {
     stock.init();
     stock.getStockTickerScroll("DJIA", "SPX", "^RUT", "CL=F", "GC=F", "CAD=X", "^FTSE");
+
     stock.autocomplete();
+
+    searchInput.addEventListener('change', displayMatches);
+    searchInput.addEventListener('keyup', displayMatches)
 })
